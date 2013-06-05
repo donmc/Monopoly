@@ -3,6 +3,7 @@
     <wb-module deploy-name="MonopolyWeb">
         <wb-resource deploy-path="/" source-path="/WebContent"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/test"/>
         <property name="java-output-path" value="/Monopoly/build/classes"/>
         <property name="context-root" value="MonopolyWeb"/>
     </wb-module>
