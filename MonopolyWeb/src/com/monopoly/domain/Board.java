@@ -9,6 +9,7 @@ public class Board {
 	
 	public Board() {
 		for (int i = 0; i < 40; i++) {
+			//bleh
 			squares.add(new Square("Square" + i))
 		}
 	}
