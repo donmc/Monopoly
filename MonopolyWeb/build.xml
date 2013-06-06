@@ -5,82 +5,82 @@
               directory with the processing instruction <?eclipse.ant.import?>
               as the first entry and export the buildfile again. -->
 <project basedir="." default="build" name="MonopolyWeb">
-    <property environment="env"/>
-    <property name="ECLIPSE_HOME" value="../../../../../Applications/eclipse"/>
-    <property name="debuglevel" value="source,lines,vars"/>
-    <property name="target" value="1.6"/>
-    <property name="source" value="1.6"/>
-    <path id="Web App Libraries.libraryclasspath"/>
-    <path id="EAR Libraries.libraryclasspath"/>
-    <path id="classpath.test">
-        <pathelement location="WebContent/WEB-INF/lib/junit.jar"/>
-        <pathelement location="build/test"/>
-    	<pathelement location="WebContent/WEB-INF/lib/org.hamcrest.core_1.1.0.v20090501071000.jar"/>
-    </path>
-    <path id="MonopolyWeb.classpath">
-        <pathelement location="build/classes"/>
-        <pathelement location="build/test"/>
-        <path refid="Web App Libraries.libraryclasspath"/>
-        <path refid="EAR Libraries.libraryclasspath"/>
-        <path refid="classpath.test"/>
-    </path>
+	<property environment="env" />
+	<property name="ECLIPSE_HOME" value="../../../../../Applications/eclipse" />
+	<property name="debuglevel" value="source,lines,vars" />
+	<property name="target" value="1.6" />
+	<property name="source" value="1.6" />
+	<path id="Web App Libraries.libraryclasspath" />
+	<path id="EAR Libraries.libraryclasspath" />
+	<path id="classpath.test">
+		<pathelement location="WebContent/WEB-INF/lib/junit.jar" />
+		<pathelement location="build/test" />
+		<pathelement location="WebContent/WEB-INF/lib/org.hamcrest.core_1.1.0.v20090501071000.jar" />
+	</path>
+	<path id="MonopolyWeb.classpath">
+		<pathelement location="build/classes" />
+		<pathelement location="build/test" />
+		<path refid="Web App Libraries.libraryclasspath" />
+		<path refid="EAR Libraries.libraryclasspath" />
+		<path refid="classpath.test" />
+	</path>
 	<target name="junit">
-		<junit fork="yes" printsummary="yes">
-		      <formatter type="brief" usefile="false"/>
+		<junit fork="yes" printsummary="yes" haltonfailure="true">
+			<formatter type="brief" usefile="false" />
 			<classpath refid="classpath.test" />
-		      <batchtest todir="build/test">
-		        <fileset dir="build/test">
-		            <include name="**/*Test.class"/>
-		        </fileset>
-		      </batchtest>
-		    </junit>
+			<batchtest todir="build/test">
+				<fileset dir="build/test">
+					<include name="**/*Test.class" />
+				</fileset>
+			</batchtest>
+		</junit>
 	</target>
-    <target name="init">
-        <mkdir dir="build/classes"/>
-        <mkdir dir="build/test"/>
-        <copy includeemptydirs="false" todir="build/classes">
-            <fileset dir="src">
-                <exclude name="**/*.launch"/>
-                <exclude name="**/*.java"/>
-            </fileset>
-        </copy>
-        <copy includeemptydirs="false" todir="build/test">
-            <fileset dir="test">
-                <exclude name="**/*.launch"/>
-                <exclude name="**/*.java"/>
-            </fileset>
-        </copy>
-    </target>
-    <target name="clean">
-        <delete dir="build/classes"/>
-        <delete dir="build/test"/>
-    </target>
-    <target depends="clean" name="cleanall"/>
-    <target depends="build-subprojects,build-project,junit" name="build"/>
-    <target name="build-subprojects"/>
-    <target depends="init" name="build-project">
-        <echo message="${ant.project.name}: ${ant.file}"/>
-        <javac debug="true" debuglevel="${debuglevel}" destdir="build/classes" source="${source}" target="${target}">
-            <src path="src"/>
-            <classpath refid="MonopolyWeb.classpath"/>
-        </javac>
-        <javac debug="true" debuglevel="${debuglevel}" destdir="build/test" source="${source}" target="${target}">
-            <src path="test"/>
-            <classpath refid="MonopolyWeb.classpath"/>
-        </javac>
-    </target>
-    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
-    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
-        <copy todir="${ant.library.dir}">
-            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
-        </copy>
-        <unzip dest="${ant.library.dir}">
-            <patternset includes="jdtCompilerAdapter.jar"/>
-            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
-        </unzip>
-    </target>
-    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
-        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
-        <antcall target="build"/>
-    </target>
+	<target name="init">
+		<mkdir dir="build/classes" />
+		<mkdir dir="build/test" />
+		<copy includeemptydirs="false" todir="build/classes">
+			<fileset dir="src">
+				<exclude name="**/*.launch" />
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+		<copy includeemptydirs="false" todir="build/test">
+			<fileset dir="test">
+				<exclude name="**/*.launch" />
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+	</target>
+	<target name="clean">
+		<delete dir="build/classes" />
+		<delete dir="build/test" />
+	</target>
+	<target depends="clean" name="cleanall" />
+	<target depends="build-subprojects,build-project,junit" name="build" />
+	<target name="build-subprojects" />
+	<target depends="init" name="build-project">
+		<echo message="${ant.project.name}: ${ant.file}" />
+		<javac debug="true" debuglevel="${debuglevel}" destdir="build/classes" source="${source}" target="${target}">
+			<src path="src" />
+			<classpath refid="MonopolyWeb.classpath" />
+		</javac>
+		<javac debug="true" debuglevel="${debuglevel}" destdir="build/test" source="${source}" target="${target}">
+			<src path="test" />
+			<classpath refid="MonopolyWeb.classpath" />
+		</javac>
+	</target>
+	<target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects" />
+	<target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+		<copy todir="${ant.library.dir}">
+			<fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar" />
+		</copy>
+		<unzip dest="${ant.library.dir}">
+			<patternset includes="jdtCompilerAdapter.jar" />
+			<fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar" />
+		</unzip>
+	</target>
+	<target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+		<property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter" />
+		<antcall target="build" />
+	</target>
 </project>
