@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="style/monopoly.css">
 </head>
 <body>
-<img src="images/Monopoly-logo.jpg" width="500" height="190"/>
+<center><img src="images/Monopoly-logo.jpg" width="500" height="190"/></center>
 <c:forEach items="${game.players}" var="player">
 <p>${player.token} is on ${player.location.name}</p>
 

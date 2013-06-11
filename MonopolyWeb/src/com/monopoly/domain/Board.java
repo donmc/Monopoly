@@ -9,9 +9,9 @@ public class Board {
 	
 	public Board() {
 		for (int i = 0; i < 40; i++) {
-			switch (1) {
+			switch (i) {
 			case 0:
-				squares.add(new Square("GoSquare"));
+				squares.add(new Square("Go Square"));
 				break;
 
 			default:
