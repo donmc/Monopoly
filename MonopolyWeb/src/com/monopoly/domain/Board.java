@@ -9,19 +9,15 @@ public class Board {
 	
 	public Board() {
 		for (int i = 0; i < 40; i++) {
-			switch (i) {
-			case 0:
-				squares.add(new Square("Go Square"));
-				break;
-
-			default:
-				squares.add(new Square("Square" + i));
-				break;
-			}
+			squares.add(new Square("Square " + i));
 		}
 	}
 	
 	public List<Square> getSquares() {
 		return squares;
+	}
+
+	public Square getStartSquare() {
+		return squares.get(0);
 	}
 }

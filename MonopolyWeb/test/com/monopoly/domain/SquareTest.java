@@ -8,7 +8,7 @@ public class SquareTest {
 
 	@Test
 	public void testSquare() {
-		//fail("Not yet implemented");
+		fail("Not yet implemented");
 	}
 
 }
