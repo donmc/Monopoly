@@ -9,7 +9,15 @@ public class Board {
 	
 	public Board() {
 		for (int i = 0; i < 40; i++) {
-			squares.add(new Square("Square " + i));
+			switch (1) {
+			case 0:
+				squares.add(new Square("GoSquare"));
+				break;
+
+			default:
+				squares.add(new Square("Square " + i));
+				break;
+			}
 		}
 	}
 	

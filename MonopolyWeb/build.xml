@@ -20,6 +20,7 @@
 	<path id="MonopolyWeb.classpath">
 		<pathelement location="build/classes" />
 		<pathelement location="build/test" />
+		<pathelement location="WebContent/WEB-INF/lib/servlet-api.jar" />
 		<path refid="Web App Libraries.libraryclasspath" />
 		<path refid="EAR Libraries.libraryclasspath" />
 		<path refid="classpath.test" />
