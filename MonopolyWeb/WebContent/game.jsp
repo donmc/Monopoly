@@ -11,7 +11,7 @@
 <body>
 <center><img src="images/Monopoly-logo.jpg" width="500" height="190"/></center>
 <c:forEach items="${game.players}" var="player">
-<p>${player.token} is on ${player.location.name}</p>
+<p>${player.token} is on ${player.location.name} and has $${player.money}</p>
 
 </c:forEach>
 <a href="/MonopolyWeb">Home</a>
