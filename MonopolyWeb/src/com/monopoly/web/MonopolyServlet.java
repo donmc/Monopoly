@@ -32,9 +32,21 @@ public class MonopolyServlet extends HttpServlet {
 
 	private void execute(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		int numberOfPlayers = Integer.parseInt(request.getParameter("numberOfPlayers"));
-		Game game = new Game(numberOfPlayers);
-		request.getSession().setAttribute("game", game);
+		
+		boolean newGame = Boolean.parseBoolean(request.getParameter("newGame"));
+		Game game = (Game)request.getSession().getAttribute("game");
+		
+		if(newGame)
+		{
+			int numberOfPlayers = Integer.parseInt(request.getParameter("numberOfPlayers"));
+		
+			game = new Game(numberOfPlayers);
+			request.getSession().setAttribute("game", game);
+		} 
+		else 
+		{
+			game.playRound();
+		}
 		
 		request.getRequestDispatcher("game.jsp").forward(request, response);
 		

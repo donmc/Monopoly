@@ -9,7 +9,13 @@
 <link rel="stylesheet" type="text/css" href="style/monopoly.css">
 </head>
 <body>
-<center><img src="images/Monopoly-logo.jpg" width="500" height="190"/></center>
+<center>
+<img src="images/Monopoly-logo.jpg" width="500" height="190"/>
+<form action="Play">
+<input type="submit" value="Play a Round"/>
+<input type="hidden" name="newGame" value="false"/>
+</form>
+</center>
 <c:forEach items="${game.players}" var="player">
 <p>${player.token} is on ${player.location.name} and has $${player.money}</p>
 
