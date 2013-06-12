@@ -15,11 +15,13 @@
 <input type="submit" value="Play a Round"/>
 <input type="hidden" name="newGame" value="false"/>
 </form>
-</center>
+<br/>
 <c:forEach items="${game.players}" var="player">
-<p>${player.token} is on ${player.location.name} and has $${player.money}</p>
+<p><b>${player.token}</b> is on <b>${player.location.name}</b> and has <b>$${player.money}</b></p>
 
 </c:forEach>
-<a href="/MonopolyWeb">Home</a>
+<br/>
+<p><a href="/MonopolyWeb">Reset Game</a></p>
+</center>
 </body>
 </html>

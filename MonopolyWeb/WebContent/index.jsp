@@ -15,6 +15,7 @@ How many players? <input type="text" name="numberOfPlayers" size="1"/>
 <input type="submit" value="Play!"/>
 <input type="hidden" name="newGame" value="true"/>
 </form>
+<p class="error">${message}</p>
 </center>
 </body>
 </html>

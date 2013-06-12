@@ -9,6 +9,9 @@ public class Game {
 	private static final String[] TOKENS = {"Horse", "Iron", "Racecar", "Dog", "Top Hat", "Shoe", "Wheelbarrow", "Thimble"};
 	
 	public Game(int numberOfPlayers) {
+		if(numberOfPlayers > TOKENS.length) {
+			throw new IllegalArgumentException("Too many players!");
+		}
 		
 		for (int i = 0; i < numberOfPlayers; i++) {
 			Player player = new Player(TOKENS[i], board.getStartSquare());

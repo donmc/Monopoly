@@ -11,7 +11,7 @@ public class Board {
 		for (int i = 0; i < 40; i++) {
 			switch (i) {
 			case 0:
-				squares.add(new Square("GoSquare"));
+				squares.add(new Square("Go Square"));
 				break;
 
 			default:

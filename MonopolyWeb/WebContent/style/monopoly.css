@@ -5,6 +5,11 @@ body
 	background-color:#b0c4de;
 	font-family: sans-serif;
 }
+.error
+{
+	font-size: small;
+	color: red;
+}
 
 input[type="text"]
 {

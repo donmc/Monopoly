@@ -15,6 +15,8 @@ import com.monopoly.domain.Game;
 @WebServlet({ "/MonopolyServlet", "/Monopoly", "/Play" })
 public class MonopolyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static String PLAY  = "game.jsp";
+	private static String RESET = "index.jsp";
 
     /**
      * Default constructor. 
@@ -33,22 +35,27 @@ public class MonopolyServlet extends HttpServlet {
 	private void execute(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		
+		String forward = PLAY;
 		boolean newGame = Boolean.parseBoolean(request.getParameter("newGame"));
 		Game game = (Game)request.getSession().getAttribute("game");
 		
-		if(newGame)
-		{
+		if(newGame) {
 			int numberOfPlayers = Integer.parseInt(request.getParameter("numberOfPlayers"));
 		
-			game = new Game(numberOfPlayers);
+			try {
+				game = new Game(numberOfPlayers);
+			} catch (IllegalArgumentException e) {
+				request.setAttribute("message", e.getMessage());
+				forward = RESET;			
+			}
+			
 			request.getSession().setAttribute("game", game);
 		} 
-		else 
-		{
+		else {
 			game.playRound();
 		}
 		
-		request.getRequestDispatcher("game.jsp").forward(request, response);
+		request.getRequestDispatcher(forward).forward(request, response);
 		
 	}
 
