@@ -6,7 +6,7 @@ import java.util.List;
 public class Game {
 	private Board board = new Board();
 	private List<Player> players = new ArrayList<Player>();
-	private static final String[] TOKENS = {"Horse", "Iron", "Racecar", "Dog", "Top Hat", "Shoe", "Wheelbarrow", "Thimble"};
+	private static final String[] TOKENS = {"Don", "Iron", "Racecar", "Dog", "Top Hat", "Shoe", "Wheelbarrow", "Thimble"};
 	
 	public Game(int numberOfPlayers) {
 		if(numberOfPlayers > TOKENS.length) {
