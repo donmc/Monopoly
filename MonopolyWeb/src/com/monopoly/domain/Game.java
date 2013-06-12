@@ -29,6 +29,5 @@ public class Game {
 
 	public void playRound() {
 		// TODO Have each players take a turn
-		System.out.println("Play Round!");
 	}
 }
