@@ -63,6 +63,12 @@ public class Board {
 				break;
 			}
 		}
+		
+		for (int i = 0; i < squares.size()-1; i++) {
+			Square nextSquare = squares.get(i+1);
+			squares.get(i).setNextSquare(nextSquare);
+		}
+		squares.get(39).setNextSquare(getStartSquare());
 	}
 	
 	public List<Square> getSquares() {
