@@ -72,4 +72,30 @@ public class Board {
 	public Square getStartSquare() {
 		return squares.get(0);
 	}
+	
+	
+	public static int getPositionForSquare(Square square)
+	{
+		for (int i = 0; i < SQUARE_NAMES.length; i++) {
+		if ( SQUARE_NAMES[i].equals(square.getName()))
+				return i;
+		}
+		return 0;
+	}
+
+	public static Square getSquareForPosition(int position)
+	{
+		String squareName = Board.getSquareNameForPosition(position);
+		Square square = new Square(squareName);
+		return square;
+	}
+	public static String getSquareNameForPosition(int position)
+	{
+		return SQUARE_NAMES[position];
+	}
+	
+	public static int getNumberOfSquares()
+	{
+		return SQUARE_NAMES.length;
+	}
 }
