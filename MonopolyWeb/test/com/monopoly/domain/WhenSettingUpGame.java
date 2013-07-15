@@ -35,5 +35,6 @@ public class WhenSettingUpGame {
 			assertEquals(1500, player.getMoney());
 		}
 	}
+
 	
 }

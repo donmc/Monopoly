@@ -72,4 +72,18 @@ public class Board {
 	public Square getStartSquare() {
 		return squares.get(0);
 	}
+	
+	public int getSquareIndex(Square location) {
+		for (int i = 0; i < 40; i++) {
+			if (squares.get(i).getName().equals(location.getName())) {
+				return i;
+			}
+		}
+		
+		return -1;
+	}
+	
+	public Square getSquareByIndex(int place) {
+		return squares.get(place);
+	}
 }
