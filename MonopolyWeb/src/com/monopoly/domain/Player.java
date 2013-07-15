@@ -1,5 +1,7 @@
 package com.monopoly.domain;
 
+import java.util.List;
+
 public class Player {
 
 	private String token;
@@ -22,5 +24,13 @@ public class Player {
 	
 	public int getMoney() {
 		return money;
+	}
+
+	public void takeTurn(Board b) {
+		int roll = Dice.roll();
+		
+		List<Square> squares = b.getSquares();
+		location = squares.get((location.getPosition() + roll) % 40);
+		
 	}
 }

@@ -55,11 +55,11 @@ public class Board {
 		for (int i = 0; i < 40; i++) {
 			switch (i) {
 			case 0:
-				squares.add(new Square("Go Square"));
+				squares.add(new Square("Go Square", 0));
 				break;
 
 			default:
-				squares.add(new Square(SQUARE_NAMES[i]));
+				squares.add(new Square(SQUARE_NAMES[i], i));
 				break;
 			}
 		}

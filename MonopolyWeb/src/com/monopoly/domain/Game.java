@@ -31,6 +31,9 @@ public class Game {
 	}
 
 	public void playRound() {
-		// TODO Have each players take a turn
+		for (Player p : players){
+			p.takeTurn(board);
+		}
+
 	}
 }
