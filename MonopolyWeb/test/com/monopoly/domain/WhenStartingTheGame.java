@@ -32,5 +32,11 @@ public class WhenStartingTheGame {
 		assertEquals(4, g.getPlayers().size());
 
 	}
+	
+	@Test
+	public void shouldCreateFirstPlayerWithHorseToken(){
+		Game g = new Game(2);
+		assertEquals("Horse",g.getPlayers().get(0).getToken());
+	}
 
 }
