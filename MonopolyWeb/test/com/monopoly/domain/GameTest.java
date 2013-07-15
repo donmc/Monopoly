@@ -12,7 +12,7 @@ public class GameTest {
 			Game g = new Game(0);
 			fail("Should fail with 0");
 		}catch(IllegalArgumentException e) {
-			
+			assertEquals("Too few players!", e.getMessage());
 		}
 	}
 
