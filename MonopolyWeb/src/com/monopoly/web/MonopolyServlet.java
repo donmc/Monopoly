@@ -40,6 +40,7 @@ public class MonopolyServlet extends HttpServlet {
 		Game game = (Game)request.getSession().getAttribute("game");
 		
 		if(newGame) {
+			
 			int numberOfPlayers = Integer.parseInt(request.getParameter("numberOfPlayers"));
 		
 			try {

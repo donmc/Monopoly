@@ -8,10 +8,15 @@ public class Game {
 	private List<Player> players = new ArrayList<Player>();
 	private static final String[] TOKENS = {"Horse", "Iron", "Racecar", "Dog", "Top Hat", "Shoe", "Wheelbarrow", "Thimble"};
 	
+	public boolean numberValid;
+	
 	public Game(int numberOfPlayers) {
-		if(numberOfPlayers > TOKENS.length) {
-			throw new IllegalArgumentException("Too many players!");
+		if((numberOfPlayers > TOKENS.length) || (numberOfPlayers < 2)) {
+			numberValid = false;
+			throw new IllegalArgumentException("wrong number of players!");
 		}
+		
+		numberValid = true;
 		
 		for (int i = 0; i < numberOfPlayers; i++) {
 			Player player = new Player(TOKENS[i], board.getStartSquare());
