@@ -12,6 +12,9 @@ public class Game {
 		if(numberOfPlayers > TOKENS.length) {
 			throw new IllegalArgumentException("Too many players!");
 		}
+		if(numberOfPlayers < 2){
+			throw new IllegalArgumentException("Too few players!");
+		}
 		
 		for (int i = 0; i < numberOfPlayers; i++) {
 			Player player = new Player(TOKENS[i], board.getStartSquare());
