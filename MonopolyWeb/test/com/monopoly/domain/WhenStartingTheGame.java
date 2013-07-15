@@ -34,9 +34,37 @@ public class WhenStartingTheGame {
 	}
 	
 	@Test
-	public void shouldCreateFirstPlayerWithHorseToken(){
+	public void shouldAssignTokensToPlayers() {
 		Game g = new Game(2);
-		assertEquals("Horse",g.getPlayers().get(0).getToken());
+		for (int i=0; i<2; i++){
+			assertNotNull(g.getPlayers().get(i).getToken());
+		}
 	}
+	
+	@Test
+	public void shouldHaveFortySquares() {
+		Game g = new Game(2);
+		assertEquals(40, g.getSquares().size());
+	}
+
+	@Test
+	public void shouldPlacePlayersOnGo() {
+		Game g = new Game (4);
+		for (int i = 0; i < 4; i++) {
+			assertEquals("Go Square", g.getPlayers().get(i).getLocation()
+					.getName());
+		}
+	}
+	
+	
+	@Test
+	public void shouldStartPlayersWith1500Buckerooneys() {
+		Game g = new Game (4);
+		for (int i = 0; i < 4; i++) {
+			assertEquals(1500, g.getPlayers().get(i).getMoney());
+		}
+	}
+	
+	
 
 }
