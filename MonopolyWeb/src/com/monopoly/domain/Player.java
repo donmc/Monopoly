@@ -9,6 +9,7 @@ public class Player {
 	public Player(String token, Square startSquare) {
 		this.location = startSquare;
 		this.token = token;
+		money = 1500;
 	}
 	
 	public Square getLocation() {
@@ -21,5 +22,12 @@ public class Player {
 	
 	public int getMoney() {
 		return money;
+	}
+
+	public void takeTurn(Die d1, Die d2) {
+		int i = d1.roll() + d2.roll();
+		for (int j = 0; j < i; j++) {
+			location = location.getNextSquare();
+		}
 	}
 }

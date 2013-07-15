@@ -1,6 +1,7 @@
 package com.monopoly.domain;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Board {
@@ -63,6 +64,9 @@ public class Board {
 				break;
 			}
 		}
+		for (int i = 0; i < 40; i++) {
+			squares.get(i).setNextSquare(squares.get((i+1)%40));
+		}
 	}
 	
 	public List<Square> getSquares() {
@@ -71,5 +75,13 @@ public class Board {
 
 	public Square getStartSquare() {
 		return squares.get(0);
+	}
+	
+	public int getSquareIndex( Square loc ) {
+		return squares.indexOf(loc);
+	}
+	
+	public Square getSquareAtIndex( int i ) {
+		return squares.get(i);
 	}
 }
