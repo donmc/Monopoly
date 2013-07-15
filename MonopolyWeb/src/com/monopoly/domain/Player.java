@@ -9,6 +9,7 @@ public class Player {
 	public Player(String token, Square startSquare) {
 		this.location = startSquare;
 		this.token = token;
+		this.money = 1500;
 	}
 	
 	public Square getLocation() {
