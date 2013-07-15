@@ -8,7 +8,12 @@ public class Game {
 	private List<Player> players = new ArrayList<Player>();
 	private static final String[] TOKENS = {"Horse", "Iron", "Racecar", "Dog", "Top Hat", "Shoe", "Wheelbarrow", "Thimble"};
 	
+	public Game(Board board, List<Player> players){
+		
+	}
+
 	public Game(int numberOfPlayers) {
+		
 		if(numberOfPlayers > TOKENS.length) {
 			throw new IllegalArgumentException("Too many players!");
 		}
@@ -17,7 +22,8 @@ public class Game {
 		}
 		
 		for (int i = 0; i < numberOfPlayers; i++) {
-			Player player = new Player(TOKENS[i], board.getStartSquare());
+			Player player = new Player(TOKENS[i], board.getStartSquare(), new Dice(), board);
+			player.setMoney(1500);
 			players.add(player);
 		}
 	}
