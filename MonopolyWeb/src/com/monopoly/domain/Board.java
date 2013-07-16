@@ -78,7 +78,9 @@ public class Board {
 	}
 	
 	public int roll(){
-		return die1.roll() + die2.roll();
+		int d1 = die1.roll();
+		int d2 = die2.roll();
+		return d1+d2;
 	}
 	
 	public static void setDie1(Die die1) {

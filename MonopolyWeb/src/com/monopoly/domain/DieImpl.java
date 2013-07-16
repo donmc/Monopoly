@@ -5,9 +5,10 @@ import java.util.Random;
 
 public class DieImpl implements Die {
 
+	private static Random rand = new Random();
+	
 	public int roll() {
-		Random rand = new Random(new Date().getTime());
-		return rand.nextInt(5)+1;
+		return (int)(6.0 * Math.random())+1;
 	}
 
 }

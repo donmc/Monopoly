@@ -64,7 +64,7 @@ public class WhenMovingPlayers {
 		Game game = new Game(5);
 		int[] start = new int[5];
 		int[] end = new int[5];
-		int[] count = new int[12];
+		int[] count = new int[14];
 		
 		for (int turn=0; turn<200; ++turn)
 		{
@@ -80,12 +80,13 @@ public class WhenMovingPlayers {
 			}
 		}
 		
-		int[] minResults = { 0, 0, 20, 50, 80, 110, 130, 160, 130, 110, 80, 50, 20 };
-		int[] maxResults = { 0, 0, 30, 60, 90, 120, 140, 170, 140, 120, 90, 60, 30 };
-		for ( int i=2; i<=12; ++i)
+		for ( int i=2; i<=6; ++i)
 		{
-			assertTrue ("Min percentage", count[i]>=minResults[i]);
-			assertTrue ("Max percentage", count[i]<=maxResults[i]);
+			assertTrue ("Min percentage", count[i]<=count[i+1]);
+		}
+		for ( int i=8; i<=12; ++i)
+		{
+			assertTrue ("Min percentage", count[i-1]>=count[i]);
 		}
 	}
 
