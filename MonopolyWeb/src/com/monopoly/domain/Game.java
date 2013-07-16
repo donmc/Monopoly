@@ -29,6 +29,16 @@ public class Game {
 		}
 	}
 	
+
+	
+	public Die getDie1() {
+		return die1;
+	}
+
+	public Die getDie2() {
+		return die2;
+	}
+
 	public List<Square> getSquares() {
 		return board.getSquares();
 	}
