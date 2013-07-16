@@ -44,16 +44,47 @@ public class WhenMovingPlayers {
 
 	
 	@Test
-	public void shouldEachPlayerMoveOncePerRound()
+	public void shouldMoveEachPlayer()
 	{
 		Game game = new Game(4);
+		MockDie die = new MockDie();
+		die.diceRollValue = 6;
+		game.setDie1(die);
+		game.setDie2(die);
 		game.playRound();
 		List <Player> players = game.getPlayers();
 
 		for (Player player : players) {
-			assertFalse(player.getLocation().getName().equals(Board.getSquareForPosition(0).getName()));
-			
+			assertTrue(player.getLocation().getName().equals("Electric Company"));
+			assertEquals(12, player.getLastRoll());
 		}
 	}
 	
+	@Test
+	public void shouldLoopAroundBoard()
+	{
+		Board board = new Board();
+		Player player = new Player("Cat", board.getStartSquare());
+		
+		MockDie die = new MockDie();
+		die.diceRollValue = 6;
+		int currentMoney = player.getMoney();
+		
+		player.takeTurn(die, die);
+		assertEquals(12, Board.getPositionForSquare(player.getLocation()));
+		assertEquals(currentMoney, player.getMoney());
+		
+		player.takeTurn(die, die);
+		assertEquals(24, Board.getPositionForSquare(player.getLocation()));
+		assertEquals(currentMoney, player.getMoney());
+		
+		player.takeTurn(die, die);
+		assertEquals(36, Board.getPositionForSquare(player.getLocation()));
+		assertEquals(currentMoney, player.getMoney());
+		
+		player.takeTurn(die, die);
+		assertEquals(8, Board.getPositionForSquare(player.getLocation()));
+		assertEquals((currentMoney + 200), player.getMoney());
+		
+	}
 }

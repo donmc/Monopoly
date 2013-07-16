@@ -18,7 +18,7 @@ public class Game {
 		if(numberOfPlayers < 2){
 			throw new IllegalArgumentException("Too few players!");
 		}
-		
+
 		//initialize Die
 		die1 = new Die();
 		die2 = new Die();
@@ -44,5 +44,14 @@ public class Game {
 		{
 			player.takeTurn(this.die1, this.die2);
 		}
+	}
+
+	public void setDie1(Die die) {
+		this.die1 = die;
+	}
+
+	public void setDie2(Die die) {
+		this.die2 = die;
+		
 	}
 }

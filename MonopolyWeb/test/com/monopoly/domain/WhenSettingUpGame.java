@@ -28,7 +28,9 @@ public class WhenSettingUpGame {
 		for (Player player : game.getPlayers())
 		{
 			assertEquals(startSquare, player.getLocation());	
+			assertTrue(player.getIsFirstRoll());
 		}
+		
 	}
 	
 	@Test

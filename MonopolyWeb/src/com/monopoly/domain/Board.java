@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Board {
 
-	private List<Square> squares = new ArrayList<Square>();
+	private static List<Square> squares = new ArrayList<Square>();
 	private static final String COMMUNITY_CHEST = "Community Chest";
 	private static final String CHANCE = "Chance";
 	
@@ -50,17 +50,22 @@ public class Board {
 			"Park Place",
 			"Luxury Tax",
 			"Boardwalk"};
+
 	
 	public Board() {
-		for (int i = 0; i < 40; i++) {
-			switch (i) {
-			case 0:
-				squares.add(new Square("Go Square"));
-				break;
 
-			default:
-				squares.add(new Square(SQUARE_NAMES[i]));
-				break;
+		if (squares.isEmpty())
+		{
+			for (int i = 0; i < 40; i++) {
+				switch (i) {
+				case 0:
+					squares.add(new Square("Go Square"));
+					break;
+	
+				default:
+					squares.add(new Square(SQUARE_NAMES[i]));
+					break;
+				}
 			}
 		}
 	}
@@ -76,18 +81,14 @@ public class Board {
 	
 	public static int getPositionForSquare(Square square)
 	{
-		for (int i = 0; i < SQUARE_NAMES.length; i++) {
-		if ( SQUARE_NAMES[i].equals(square.getName()))
-				return i;
-		}
-		return 0;
+
+		return squares.indexOf(square);
 	}
 
 	public static Square getSquareForPosition(int position)
 	{
-		String squareName = Board.getSquareNameForPosition(position);
-		Square square = new Square(squareName);
-		return square;
+		return squares.get(position);
+
 	}
 	public static String getSquareNameForPosition(int position)
 	{
