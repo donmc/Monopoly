@@ -17,6 +17,7 @@
 </form>
 <br/>
 <c:forEach items="${game.players}" var="player">
+<p><b>${player.token}</b> rolled a <b>${player.lastRoll}</b> <c:if test="${player.rolledDoubles}"> and rolled doubles.</c:if></p>
 <p><b>${player.token}</b> is on <b>${player.location.name}</b> and has <b>$${player.money}</b></p>
 
 </c:forEach>

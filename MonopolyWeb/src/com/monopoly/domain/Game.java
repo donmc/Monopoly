@@ -5,6 +5,8 @@ import java.util.List;
 
 public class Game {
 	private Board board = new Board();
+	private Dice diceOne = new Dice();
+	private Dice diceTwo = new Dice();
 	private List<Player> players = new ArrayList<Player>();
 	private static final String[] TOKENS = {"Horse", "Iron", "Racecar", "Dog", "Top Hat", "Shoe", "Wheelbarrow", "Thimble"};
 	
@@ -32,7 +34,7 @@ public class Game {
 
 	public void playRound() {
 		for (Player p : players){
-			p.takeTurn(board);
+			p.takeTurn(board, diceOne, diceTwo);
 		}
 
 	}
