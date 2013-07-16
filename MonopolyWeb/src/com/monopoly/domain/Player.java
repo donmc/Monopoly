@@ -9,8 +9,18 @@ public class Player {
 	public Player(String token, Square startSquare) {
 		this.location = startSquare;
 		this.token = token;
+		this.money = 1500;
 	}
 	
+	
+	public void takeTurn(Board board) {
+		int position = board.getSquares().indexOf(location) + 7;
+		position = position % 40;
+		location = board.getSquares().get(position);
+	}
+
+
+
 	public Square getLocation() {
 		return location;
 	}

@@ -1,5 +1,7 @@
 package com.monopoly.domain;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +13,9 @@ public class Game {
 	public Game(int numberOfPlayers) {
 		if(numberOfPlayers > TOKENS.length) {
 			throw new IllegalArgumentException("Too many players!");
+		}
+		if(numberOfPlayers < 2) {
+			throw new IllegalArgumentException("Too few players!");
 		}
 		
 		for (int i = 0; i < numberOfPlayers; i++) {
@@ -28,6 +33,11 @@ public class Game {
 	}
 
 	public void playRound() {
-		// TODO Have each players take a turn
+		
+		for (Player player : getPlayers())
+		{
+			player.takeTurn(board);
+		}
 	}
+
 }
