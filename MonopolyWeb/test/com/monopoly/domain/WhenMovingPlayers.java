@@ -1,8 +1,14 @@
 package com.monopoly.domain;
 
+
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import com.monopoly.domain.Board;
+import com.monopoly.domain.Die;
+import com.monopoly.domain.Player;
+import com.monopoly.domain.Square;
 
 public class WhenMovingPlayers {
 	
@@ -12,9 +18,7 @@ public class WhenMovingPlayers {
 		Player player = new Player("Cat", board.getStartSquare());
 		
 		
-		player.takeTurn();
-		
-		assertFalse(player.getLocation().equals(board.getStartSquare()));
+		player.takeTurn(new Die(), new Die());		assertFalse(player.getLocation().equals(board.getStartSquare()));
 	}
 	
 	@Test
@@ -25,7 +29,7 @@ public class WhenMovingPlayers {
 		
 		int currentPosition = board.getSquareIndex(player.getLocation());
 		
-		player.takeTurn();
+		player.takeTurn(new Die(), new Die());
 		
 		int newPosition = board.getSquareIndex(player.getLocation());
 		
@@ -40,10 +44,10 @@ public class WhenMovingPlayers {
 		Board board =new Board();
 		Player player = new Player("Cat", board.getStartSquare());
 		
-		player.takeTurn();
+		player.takeTurn(new Die(), new Die());
 		int currentPosition = board.getSquareIndex(player.getLocation());
 		
-		player.takeTurn();
+		player.takeTurn(new Die(), new Die());
 		int newPosition = board.getSquareIndex(player.getLocation());
 		
 		int distance = ( (newPosition - currentPosition) + 40 ) % 40;
@@ -51,23 +55,27 @@ public class WhenMovingPlayers {
 		assertTrue(distance <= 12);
 	}
 	
+	// shouldLoopAroundBoard
+	@Test
+	public void shouldLoopAroundBoard() {
+		Board board = new Board();
+		Player player = new Player("Cat", board.getStartSquare());
+		
+		Square location = new Square("Boardwalk");
+		player.setLocation(location);
+		
+		LoadedDie die1 = new LoadedDie();
+		die1.fakedRoll(1);
+		LoadedDie die2 = new LoadedDie();
+		die2.fakedRoll(2);
+		
+		player.takeTurn(die1, die2);
 
-	// Move Players
-	// 0 // Able to take a turn (e.g. In Jail?)
-	// // // Demonstrate the player is able to move
-	// 1 // Roll Dice (pick 2 numbers 1 ~ 6 or 1 pick number 2 ~ 12)
-	// // // Demonstrate the player has a roll value
-	// 2 // Calculate new location based on current location
-	// // // Demonstrate the player has a new location based on the roll
-	// 3 // Determine action based on new location (Not in scope for this story)
-	// 4 // (if using two dice and the numbers were the same) -> // 1 // (May not be in scope for this story)
+		Square square = player.getLocation();
+		assertTrue(square.getName().equals("Community Chest"));
+	}
 	
-	// Pass Go
-	// Add $200 to player money
-	
-	// Lux - Inc Tax
-	// // Pay LX%
-	// // Pay Inc Tax IT%
+	// shouldMoveEachPlayer
 	
 
 }

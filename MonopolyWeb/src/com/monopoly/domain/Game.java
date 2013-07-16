@@ -32,6 +32,11 @@ public class Game {
 	}
 
 	public void playRound() {
+		for (Player player : this.getPlayers()) {
+			Die die = new Die();
+			Die die2 = new Die();
+			player.takeTurn(die, die2);
+		}
 		// TODO Have each players take a turn
 	}
 }

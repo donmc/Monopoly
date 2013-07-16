@@ -5,7 +5,12 @@ public class Player {
 	private String token;
 	private Square location;
 	private int money;
+	private int lastRoll;
 	
+	public int getLastRoll() {
+		return lastRoll;
+	}
+
 	public Player(String token, Square startSquare) {
 		this.location = startSquare;
 		this.token = token;
@@ -17,7 +22,11 @@ public class Player {
 		return location;
 	}
 	
-	public void setLocation(int move) {
+	public void setLocation(Square location) {
+		this.location = location;
+	}
+
+	public void moveLocation(int move) {
 		
 		Board board = new Board();
 		
@@ -42,9 +51,11 @@ public class Player {
 		return money;
 	}
 
-	public void takeTurn() {
+	public void takeTurn(IDie die, IDie die2) {
 		
-		setLocation(5);
+		int roll = die.getValue() + die2.getValue();
+		lastRoll = roll;
+		moveLocation(die.getValue() + die2.getValue());
 		
 	}
 }
