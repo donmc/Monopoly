@@ -44,6 +44,10 @@ public class Player {
 		jailRollCounter = 0;
 	}
 	
+	public int getlastRoll(){
+		return lastRoll;
+	}
+	
 	
 	public void takeTurn() {
 		boolean leftJail = false;
