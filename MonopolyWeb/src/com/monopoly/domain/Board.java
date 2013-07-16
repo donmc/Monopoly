@@ -8,6 +8,8 @@ public class Board {
 	private List<Square> squares = new ArrayList<Square>();
 	private static final String COMMUNITY_CHEST = "Community Chest";
 	private static final String CHANCE = "Chance";
+	private static Die die1;
+	private static Die die2;
 	
 	private static final String[] SQUARE_NAMES = 
 		   {"Go Square",
@@ -52,6 +54,8 @@ public class Board {
 			"Boardwalk"};
 	
 	public Board() {
+		die1 = new Die();
+		die2 = new Die();
 		for (int i = 0; i < 40; i++) {
 			switch (i) {
 			case 0:
@@ -71,5 +75,9 @@ public class Board {
 
 	public Square getStartSquare() {
 		return squares.get(0);
+	}
+	
+	public int roll(){
+		return die1.roll() + die2.roll();
 	}
 }

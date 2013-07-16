@@ -35,4 +35,6 @@ public class WhenSettingUpGame {
 		assertEquals(40, game.getSquares().size());
 		//fail("Not yet implemented");
 	}
+	
+	
 }
