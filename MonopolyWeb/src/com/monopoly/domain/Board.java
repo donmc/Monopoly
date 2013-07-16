@@ -54,8 +54,8 @@ public class Board {
 			"Boardwalk"};
 	
 	public Board() {
-		die1 = new Die();
-		die2 = new Die();
+		die1 = new DieImpl();
+		die2 = new DieImpl();
 		for (int i = 0; i < 40; i++) {
 			switch (i) {
 			case 0:
@@ -79,5 +79,13 @@ public class Board {
 	
 	public int roll(){
 		return die1.roll() + die2.roll();
+	}
+	
+	public static void setDie1(Die die1) {
+		Board.die1 = die1;
+	}
+	
+	public static void setDie2(Die die2) {
+		Board.die2 = die2;
 	}
 }

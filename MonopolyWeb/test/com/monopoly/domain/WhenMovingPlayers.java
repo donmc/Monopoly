@@ -48,8 +48,8 @@ public class WhenMovingPlayers {
 	@Test
 	public void shouldLoopAroundBoard(){
 		Board board = new Board();
-		board.setDie1(new LoadedDie(6));
-		board.setDie2(new LoadedDie(5));
+		Board.setDie1(new LoadedDie(6));
+		Board.setDie2(new LoadedDie(5));
 		
 		Player player = new Player("Hat", board.getSquares().get(38));
 		
@@ -80,13 +80,13 @@ public class WhenMovingPlayers {
 			}
 		}
 		
-//		int[] minResults = { 0, 0, 20, 50, 80, 110, 130, 160, 130, 110, 80, 50, 20 };
-//		int[] maxResults = { 0, 0, 30, 60, 90, 120, 140, 170, 140, 120, 90, 60, 30 };
-//		for ( int i=2; i<=12; ++i)
-//		{
-//			assertTrue ("Min percentage", count[i]>=minResults[i]);
-//			assertTrue ("Max percentage", count[i]<=maxResults[i]);
-//		}
+		int[] minResults = { 0, 0, 20, 50, 80, 110, 130, 160, 130, 110, 80, 50, 20 };
+		int[] maxResults = { 0, 0, 30, 60, 90, 120, 140, 170, 140, 120, 90, 60, 30 };
+		for ( int i=2; i<=12; ++i)
+		{
+			assertTrue ("Min percentage", count[i]>=minResults[i]);
+			assertTrue ("Max percentage", count[i]<=maxResults[i]);
+		}
 	}
 
 	private void getPositions(Game game, int[] list) {
