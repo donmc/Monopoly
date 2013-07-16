@@ -14,6 +14,7 @@ public class Player {
 	
 	
 	public void takeTurn(Board board) {
+		//TODO randomize
 		int position = board.getSquares().indexOf(location) + 7;
 		position = position % 40;
 		location = board.getSquares().get(position);

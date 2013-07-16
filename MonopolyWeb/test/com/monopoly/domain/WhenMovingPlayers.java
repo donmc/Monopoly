@@ -61,8 +61,8 @@ public class WhenMovingPlayers {
 			for (int player=0; player<5; player++)
 			{
 				int delta = (start[player]<end[player]) ? end[player]-start[player] : (40- start[player]) + end[player];
-				assertTrue ("Location should be changing around board", delta>=2);
-				assertTrue ("Location should be changing around board", delta<=12);
+				assertTrue ("Location change should be greater than or equal to 2 ", delta>=2);
+				assertTrue ("Location change should be less than or equal to 12", delta<=12);
 				count[delta]++;
 			}
 		}
