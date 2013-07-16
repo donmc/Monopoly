@@ -22,6 +22,11 @@ public class Player {
 		position = position % 40;
 		location = board.getSquares().get(position);
 		
+		if (startPosition>position && position>0)
+		{
+			new GoSquare("Go Square").process(this);
+		}
+		
 		location.process(this);
 	}
 

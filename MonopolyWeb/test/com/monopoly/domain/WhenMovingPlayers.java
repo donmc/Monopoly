@@ -61,7 +61,7 @@ public class WhenMovingPlayers {
 	@Test
 	public void shouldHaveProperRollDistribution()
 	{
-		Game game = new Game(5);
+		Game game = new Game(5); 
 		int[] start = new int[5];
 		int[] end = new int[5];
 		int[] count = new int[14];
@@ -86,7 +86,7 @@ public class WhenMovingPlayers {
 		}
 		for ( int i=8; i<=12; ++i)
 		{
-			assertTrue ("Min percentage", count[i-1]>=count[i]);
+			assertTrue ("Min percentage", count[i-1]>=count[i]-1);
 		}
 	}
 

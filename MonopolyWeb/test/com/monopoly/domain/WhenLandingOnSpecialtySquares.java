@@ -22,7 +22,7 @@ public class WhenLandingOnSpecialtySquares {
 		assertEquals(1700, player.getMoney());
 	}
 
-//	@Test
+	@Test
 	public void shouldCollect200WhenPassingGo () {
 
 		Board board = new Board();
