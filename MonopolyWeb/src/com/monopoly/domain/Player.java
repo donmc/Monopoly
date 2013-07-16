@@ -44,13 +44,40 @@ public class Player {
 		
 		
 		List<Square> squares = b.getSquares();
-		location = squares.get((location.getPosition() + roll) % 40);
+		int newPos = location.getPosition() + roll;
+		havePassedGo(newPos);
+		location = squares.get(newPos % 40);
+		
+		handleLandingOnSpecialSquares(b);
 		
 		if (times<3 && firstRoll == secondRoll) {
 			rolledDoubles = true;
 			takeTurn(b,d1,d2, times++);
 		}
 		
+	}
+
+	private void havePassedGo(int newPos) {
+		if (newPos >= 40){
+			money +=200;
+		}
+	}
+
+	private void handleLandingOnSpecialSquares(Board b) {
+		
+		if (location==b.getSquares().get(38)){
+			money-=75;
+		}
+		
+		if (location==b.getSquares().get(4)){
+			if (money < 2000) {
+				money =  (money/10) * 9;
+			}
+			else {
+				money-=200;
+			}
+				
+		}
 	}
 
 	public int getLastRoll() {
@@ -60,5 +87,9 @@ public class Player {
 
 	public boolean getRolledDoubles() {
 		return rolledDoubles;
+	}
+
+	void setMoney(int money) {
+		this.money = money;
 	}
 }
