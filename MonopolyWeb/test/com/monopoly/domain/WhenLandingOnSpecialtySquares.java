@@ -22,7 +22,22 @@ public class WhenLandingOnSpecialtySquares {
 		assertEquals(1700, player.getMoney());
 	}
 
-@Test
+//	@Test
+	public void shouldCollect200WhenPassingGo () {
+
+		Board board = new Board();
+		Board.setDie1(new LoadedDie(3));
+		Board.setDie2(new LoadedDie(1));
+		
+		Player player = new Player("Hat", board.getSquares().get(37));
+		player.takeTurn(board);
+		
+		assertTrue ("Must be on Mediterranean Ave square", player.getLocation().getName().equals("Mediterranean Ave"));
+
+		assertEquals(1700, player.getMoney());
+	}
+
+	@Test
 	public void shouldPay75WhenLandingOnLux () {
 	
 		Board board = new Board();
@@ -34,8 +49,24 @@ public class WhenLandingOnSpecialtySquares {
 		
 		assertTrue ("Must be on LUX square", player.getLocation().getName().equals("Luxury Tax"));
 	
-		assertEquals(1575, player.getMoney());
+		assertEquals(1425, player.getMoney());
 	}
+
+	@Test
+	public void shouldPay150WhenLandingOnLuxWith1500 () {
+	
+		Board board = new Board();
+		Board.setDie1(new LoadedDie(3));
+		Board.setDie2(new LoadedDie(1));
+		
+		Player player = new Player("Hat", board.getStartSquare());
+		player.takeTurn(board);
+		
+		assertTrue ("Must be on Income Tax square", player.getLocation().getName().equals("Income Tax"));
+	
+		assertEquals(1350, player.getMoney());
+	}
+	
 }
 
 

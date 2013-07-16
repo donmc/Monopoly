@@ -13,9 +13,5 @@ public class Square {
 	}
 
 	public void process(Player player) {
-		if (name.equals("Go Square")) {
-			player.addMoney(200);
-		}
-		
 	}
 }

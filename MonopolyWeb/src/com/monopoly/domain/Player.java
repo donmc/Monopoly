@@ -17,7 +17,8 @@ public class Player {
 	public void takeTurn(Board board) {
 		//TODO move dice to game?
 		lastRoll = board.roll();
-		int position = board.getSquares().indexOf(location) + lastRoll;
+		int startPosition = board.getSquares().indexOf(location);
+		int position =  startPosition + lastRoll;
 		position = position % 40;
 		location = board.getSquares().get(position);
 		

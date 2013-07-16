@@ -82,7 +82,7 @@ public class WhenMovingPlayers {
 		
 		for ( int i=2; i<=6; ++i)
 		{
-			assertTrue ("Min percentage", count[i]<=count[i+1]);
+			assertTrue ("Min percentage i="+i+" has "+count[i]+" <= "+ count[i+1], count[i]<=count[i+1]);
 		}
 		for ( int i=8; i<=12; ++i)
 		{
