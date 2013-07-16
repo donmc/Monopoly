@@ -13,6 +13,10 @@ public abstract class DiceBase {
 		return d2;
 	}
 	
+	public boolean rolledDoubles(){
+		return getD1() == getD2();
+	}
+	
 	public int getTotal(){
 		return getD1() + getD2();
 	}

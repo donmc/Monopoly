@@ -8,7 +8,7 @@ public class Board {
 	private List<Square> squares = new ArrayList<Square>();
 	private static final String COMMUNITY_CHEST = "Community Chest";
 	private static final String CHANCE = "Chance";
-	
+
 	private static final String[] SQUARE_NAMES = 
 		   {"Go Square",
 			"Mediterranean Ave",
