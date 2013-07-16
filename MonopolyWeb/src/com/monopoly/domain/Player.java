@@ -5,6 +5,10 @@ public class Player {
 	private String token;
 	private Square location;
 	private int money;
+	public void setMoney(int money) {
+		this.money = money;
+	}
+
 	private int lastRoll;
 	
 	public int getLastRoll() {
@@ -56,6 +60,29 @@ public class Player {
 		int roll = die.getValue() + die2.getValue();
 		lastRoll = roll;
 		moveLocation(die.getValue() + die2.getValue());
+		resolveLocation();
 		
+	}
+	
+	public void resolveLocation() {
+		
+		Board board = new Board();
+		int position = board.getSquareIndex(location);
+		if (position < getLastRoll()) {
+			// Passed Go
+			money += 200;
+		}
+		else if (location.getName().equals("Luxury Tax")) {
+			// Landed on Luxury Tax
+			money -= 75;
+		}
+		else if (position == 4) {
+			// Landed on income Tax
+			if (money >= 2000) {
+				money -= 200;
+			} else {
+				money = (int)(money * .9); 
+			}
+		}
 	}
 }
