@@ -42,4 +42,9 @@ public class Game {
 	public void setPlayers(List<Player> players) {
 		this.players = players;
 	}
+
+	public void setDice(Die die1, Die die2) {
+		d1 = die1;
+		d2 = die2;		
+	}
 }
