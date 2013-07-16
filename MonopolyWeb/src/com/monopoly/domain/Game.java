@@ -7,6 +7,8 @@ public class Game {
 	private Board board = new Board();
 	private List<Player> players = new ArrayList<Player>();
 	private static final String[] TOKENS = {"Horse", "Iron", "Racecar", "Dog", "Top Hat", "Shoe", "Wheelbarrow", "Thimble"};
+	private Die d1 = new Die();
+	private Die d2 = new Die();
 	
 	public Game(int numberOfPlayers) {
 		if(numberOfPlayers > TOKENS.length) {
@@ -32,6 +34,12 @@ public class Game {
 	}
 
 	public void playRound() {
-		// TODO Have each players take a turn
+		for (Player p : players) {
+			p.takeTurn(d1, d2);
+		}
+	}
+	
+	public void setPlayers(List<Player> players) {
+		this.players = players;
 	}
 }

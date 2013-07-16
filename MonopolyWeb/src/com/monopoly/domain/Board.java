@@ -53,19 +53,35 @@ public class Board {
 			"Boardwalk"};
 	
 	public Board() {
+		buildSquares();
+		linkSquares();
+	}
+
+	private void linkSquares() {
+		for (int i = 0; i < 40; i++) {
+			squares.get(i).setNextSquare(squares.get((i+1)%40));
+		}
+	}
+
+	private void buildSquares() {
 		for (int i = 0; i < 40; i++) {
 			switch (i) {
 			case 0:
-				squares.add(new Square("Go Square"));
+				squares.add(new GoSquare(SQUARE_NAMES[i]));
+				break;
+				
+			case 38:
+				squares.add(new LuxuryTaxSquare(SQUARE_NAMES[i]));
+				break;
+				
+			case 4:
+				squares.add( new IncomeTaxSquare( SQUARE_NAMES[i] ) );
 				break;
 
 			default:
 				squares.add(new Square(SQUARE_NAMES[i]));
 				break;
 			}
-		}
-		for (int i = 0; i < 40; i++) {
-			squares.get(i).setNextSquare(squares.get((i+1)%40));
 		}
 	}
 	
