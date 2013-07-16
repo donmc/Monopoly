@@ -20,6 +20,8 @@ public class Player {
 		int position = board.getSquares().indexOf(location) + lastRoll;
 		position = position % 40;
 		location = board.getSquares().get(position);
+		
+		location.process(this);
 	}
 
 
@@ -42,5 +44,9 @@ public class Player {
 	
 	public void setLastRoll(int lastRoll) {
 		this.lastRoll = lastRoll;
+	}
+	
+	public void addMoney(int money) {
+		this.money += money;
 	}
 }

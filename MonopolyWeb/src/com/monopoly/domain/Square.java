@@ -11,4 +11,11 @@ public class Square {
 	public String getName() {
 		return name;
 	}
+
+	public void process(Player player) {
+		if (name.equals("Go Square")) {
+			player.addMoney(200);
+		}
+		
+	}
 }
