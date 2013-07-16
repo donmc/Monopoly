@@ -10,6 +10,7 @@ public class Player {
 	private int doubleCount;
 	private boolean inJail = false;
 	private int jailRollCounter;
+	private int lastRoll;
 
 	public Player(String token, Square startSquare, DiceBase dice, Board board) {
 		this.location = startSquare;
@@ -43,14 +44,12 @@ public class Player {
 		jailRollCounter = 0;
 	}
 	
-	public int getLastRoll() {
-		return dice.getTotal();
-	}
-
+	
 	public void takeTurn() {
 		boolean leftJail = false;
 		dice.roll();
-
+		lastRoll = dice.getTotal();
+		
 		if (getIsInJail()) {
 			jailRollCounter++;
 			if (dice.rolledDoubles()) {
@@ -66,10 +65,14 @@ public class Player {
 				
 			}
 		}
-
-		location = board.getSquareFromRoll(location, dice);
+		RollResult result = board.getSquareFromRoll(location, dice);
+		location = result.getLocation();
 		
+		
+
 		if(location.getName().equals("Go Square")) {
+			money+=200;
+		} else if(result.passedGo()){
 			money+=200;
 		}
 		
@@ -108,4 +111,9 @@ public class Player {
 			}
 		}
 	}
+
+	public int getLastRoll() {
+		return lastRoll;
+	}
+
 }

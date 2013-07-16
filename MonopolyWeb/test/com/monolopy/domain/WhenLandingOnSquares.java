@@ -23,6 +23,17 @@ public class WhenLandingOnSquares {
 	}
 	
 	@Test
+	public void shouldCollect200DollarsWhenPassingGo() {
+		Board board = new Board();
+		DiceBase dice = new RiggedDice(2, 1);
+		Player player = new Player("Cat", board.getSquares().get(38), dice, board);
+		player.setMoney(1500);
+		
+		player.takeTurn();
+		assertEquals(player.getMoney(), 1700);
+	}
+	
+	@Test
 	public void shouldPay75WhenLandingOnLuxuryTax() {
 		Board board = new Board();
 		DiceBase dice = new RiggedDice(2, 1);

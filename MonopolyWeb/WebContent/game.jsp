@@ -17,8 +17,7 @@
 </form>
 <br/>
 <c:forEach items="${game.players}" var="player">
-<p><b>${player.token}</b> is on <b>${player.location.name}</b> and has <b>$${player.money}</b></p>
-<p><b>${player.token}</b>rolled <b>${player.getlastroll}</b> is on <b>${player.location.name}</b> and has <b>$${player.money}</b></p>
+<p><b>${player.token}</b> rolled <b>${player.lastRoll}</b> is on <b>${player.location.name}</b> and has <b>$${player.money}</b></p>
 </c:forEach>
 <br/>
 <p><a href="/MonopolyWeb">Reset Game</a></p>

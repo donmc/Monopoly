@@ -72,16 +72,19 @@ public class Board {
 	public Square getStartSquare() {
 		return squares.get(0);
 	}
+	
 
-	public Square getSquareFromRoll(Square location, DiceBase dice) {
+	public RollResult getSquareFromRoll(Square location, DiceBase dice) {
 
+		int index = -1;
 		for(int i=0;i<squares.size();i++){
 			if(squares.get(i).equals(location)){
 				if(i+dice.getTotal() > squares.size() - 1){
-					return squares.get( -(squares.size() - i) + dice.getTotal());
+					index = -(squares.size() - i) + dice.getTotal();
 				} else {
-					return squares.get(i+dice.getTotal());
+					index = i+dice.getTotal();
 				}
+				return new RollResult(squares.get(index), index < i);
 			}
 		}
 		return null;
