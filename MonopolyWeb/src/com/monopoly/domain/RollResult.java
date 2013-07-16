@@ -12,14 +12,7 @@ public class RollResult {
 	public boolean passedGo() {
 		return passedGo;
 	}
-	public void setPassedGo(boolean passedGo) {
-		this.passedGo = passedGo;
-	}
 	public Square getLocation() {
 		return location;
 	}
-	public void setLocation(Square location) {
-		this.location = location;
-	}
-	
 }

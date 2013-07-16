@@ -99,6 +99,7 @@ public class Player {
 		if (doubleCount == 2) {
 			location = board.getSquares().get(10);
 			doubleCount = 0;
+			setIsInJail(true);
 			return;
 		}
 
@@ -112,8 +113,5 @@ public class Player {
 		}
 	}
 
-	public int getLastRoll() {
-		return lastRoll;
-	}
 
 }

@@ -8,10 +8,6 @@ public class Game {
 	private List<Player> players = new ArrayList<Player>();
 	private static final String[] TOKENS = {"Horse", "Iron", "Racecar", "Dog", "Top Hat", "Shoe", "Wheelbarrow", "Thimble"};
 	
-	public Game(Board board, List<Player> players){
-		
-	}
-
 	public Game(int numberOfPlayers) {
 		
 		if(numberOfPlayers > TOKENS.length) {

@@ -2,17 +2,28 @@ package com.monolopy.domain;
 
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
 import com.monopoly.domain.Board;
 import com.monopoly.domain.Dice;
 import com.monopoly.domain.DiceBase;
+import com.monopoly.domain.Game;
 import com.monopoly.domain.Player;
 import com.monopoly.domain.Square;
 
 public class WhenMovingPlayers {
 
+	@Test
+	public void shouldMove(){
+		Game game = new Game(5);
+		game.playRound();
+		for(Player player: game.getPlayers()){
+			assertFalse(player.getLocation().getName().equals("Go Square"));
+		}
+	}
+	
 	@Test
 	public void shouldMoveSpacesAccordingToDiceRoll() {
 		Board board = new Board();
@@ -76,6 +87,26 @@ public class WhenMovingPlayers {
 		Square expectedSquare = board.getSquares().get(7);
 		
 		player.takeTurn();
+		assertEquals(player.getLocation(), expectedSquare);
+	}
+	
+	@Test
+	public void shouldGoToJailWhenRollingThreeDoublesInARow(){
+		Board board = new Board();
+		int[][] turns = new int[][]{
+				{1, 1},
+				{1, 1},
+				{1, 1}
+		};
+		DiceBase dice = new MultiTurnRiggedDice(turns);
+		Player player = new Player("Cat", board.getSquares().get(0), dice, board);
+		
+		
+		Square expectedSquare = board.getSquares().get(10);
+		
+		//Players roll on double themselves.
+		player.takeTurn();
+		
 		assertEquals(player.getLocation(), expectedSquare);
 	}
 

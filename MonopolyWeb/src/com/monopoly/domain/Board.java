@@ -76,17 +76,18 @@ public class Board {
 
 	public RollResult getSquareFromRoll(Square location, DiceBase dice) {
 
-		int index = -1;
+		int newPosition = -1;
+		int currentPosition = -1;
 		for(int i=0;i<squares.size();i++){
 			if(squares.get(i).equals(location)){
+				currentPosition = i;
 				if(i+dice.getTotal() > squares.size() - 1){
-					index = -(squares.size() - i) + dice.getTotal();
+					newPosition = -(squares.size() - i) + dice.getTotal();
 				} else {
-					index = i+dice.getTotal();
+					newPosition = i+dice.getTotal();
 				}
-				return new RollResult(squares.get(index), index < i);
 			}
 		}
-		return null;
+		return new RollResult(squares.get(newPosition), newPosition < currentPosition);
 	}
 }
