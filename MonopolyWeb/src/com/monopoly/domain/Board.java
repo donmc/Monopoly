@@ -2,6 +2,7 @@ package com.monopoly.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import com.monopoly.persistence.FakeProperties;
 import com.monopoly.persistence.Properties;
@@ -16,6 +17,21 @@ public class Board {
 	private Properties properties = new FakeProperties();
 	
 	public Board() {
+		ResourceBundle bundle = ResourceBundle.getBundle("properties");
+		String className = bundle.getString("properties");
+		try {
+			properties = (Properties)Class.forName(className).newInstance();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		die1 = new DieImpl();
 		die2 = new DieImpl();
 		for (int i = 0; i < 40; i++) {
