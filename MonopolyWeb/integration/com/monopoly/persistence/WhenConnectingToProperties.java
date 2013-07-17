@@ -7,7 +7,7 @@ public class WhenConnectingToProperties {
 
 	@Test
 	public void shouldRetrieveAPropertyNameByPosition() {
-		PropertiesDAO dao = new PropertiesDAO();
+		Properties dao = new PropertiesDAO();
 		String propertyName = dao.getPropertyNameByPosition(4);
 		assertEquals ("Baltic Ave",propertyName); 
 

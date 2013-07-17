@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class PropertiesDAO {
+public class PropertiesDAO implements Properties {
 
 	private Connection dbConnection = null;
     private String url = "jdbc:mysql://ec2-23-21-211-172.compute-1.amazonaws.com/MonopolyGameDB";
@@ -37,6 +37,10 @@ public class PropertiesDAO {
 	    }
 	}
 
+	/* (non-Javadoc)
+	 * @see com.monopoly.persistence.Properties#getPropertyNameByPosition(int)
+	 */
+	@Override
 	public String getPropertyNameByPosition(int position) {
 		String name = null;
 
@@ -57,6 +61,10 @@ public class PropertiesDAO {
 	}
 
 
+	/* (non-Javadoc)
+	 * @see com.monopoly.persistence.Properties#selectAllPropertyNames(int)
+	 */
+	@Override
 	public String selectAllPropertyNames(int position) {
 		String name = null;
 	    try{ 
