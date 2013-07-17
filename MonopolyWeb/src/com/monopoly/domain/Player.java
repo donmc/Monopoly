@@ -37,15 +37,20 @@ public class Player {
 		int place = board.getSquareIndex(location);
 		
 		int nplace = place + move;
-		if (nplace >= 40)
+		if (nplace >= 40) {
 			place = nplace - 40;
+			if (place != 0)
+				board.getSquareByIndex(0).passesOver(this);
+		}
 		else
 			place = nplace;
 		
 		location = board.getSquareByIndex(place);
-		
+		location.landOn(this);
+	
 		
 	}
+	
 	
 	public String getToken() {
 		return token;
@@ -60,29 +65,20 @@ public class Player {
 		int roll = die.getValue() + die2.getValue();
 		lastRoll = roll;
 		moveLocation(die.getValue() + die2.getValue());
-		resolveLocation();
 		
 	}
 	
-	public void resolveLocation() {
+
+
+	public void credit(int amount) {
+		// TODO Auto-generated method stub
+		money += amount;
 		
-		Board board = new Board();
-		int position = board.getSquareIndex(location);
-		if (position < getLastRoll()) {
-			// Passed Go
-			money += 200;
-		}
-		else if (location.getName().equals("Luxury Tax")) {
-			// Landed on Luxury Tax
-			money -= 75;
-		}
-		else if (position == 4) {
-			// Landed on income Tax
-			if (money >= 2000) {
-				money -= 200;
-			} else {
-				money = (int)(money * .9); 
-			}
-		}
+	}
+
+	public void debit(int amount) {
+		money -= amount;
+		// TODO Auto-generated method stub
+		
 	}
 }

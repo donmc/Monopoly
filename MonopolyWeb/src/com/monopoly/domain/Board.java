@@ -52,10 +52,26 @@ public class Board {
 			"Boardwalk"};
 	
 	public Board() {
+		buildSquares();
+	}
+	
+	public List<Square> getSquares() {
+		return squares;
+	}
+
+	public void buildSquares() {
 		for (int i = 0; i < 40; i++) {
-			switch (i) {
+			switch(i) {
 			case 0:
-				squares.add(new Square("Go Square"));
+				squares.add(new GoSquare("Go Square"));
+				break;
+			
+			case 38:
+				squares.add(new LuxTaxSquare("Luxury Tax"));
+				break;
+				
+			case 4:
+				squares.add(new IncomeTaxSquare("Income Tax"));
 				break;
 
 			default:
@@ -64,11 +80,6 @@ public class Board {
 			}
 		}
 	}
-	
-	public List<Square> getSquares() {
-		return squares;
-	}
-
 	public Square getStartSquare() {
 		return squares.get(0);
 	}

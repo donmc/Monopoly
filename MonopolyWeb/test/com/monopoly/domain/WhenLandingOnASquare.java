@@ -3,6 +3,7 @@ package com.monopoly.domain;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+import org.mockito.Mockito;
 
 public class WhenLandingOnASquare {
 
@@ -70,6 +71,10 @@ public class WhenLandingOnASquare {
 		Board board = new Board();
 		Player player = new Player("Cat", board.getSquares().get(1));
 		
+		
+		Die d1 = Mockito.mock(Die.class);
+		
+		
 		LoadedDie die1 = new LoadedDie();
 		die1.fakedRoll(1);
 		LoadedDie die2 = new LoadedDie();
@@ -90,6 +95,8 @@ public class WhenLandingOnASquare {
 	public void shopuldPayIncomeTaxOnIncomeTax3000() {
 		Board board = new Board();
 		Player player = new Player("Cat", board.getSquares().get(1));
+		
+		
 		
 		LoadedDie die1 = new LoadedDie();
 		die1.fakedRoll(1);

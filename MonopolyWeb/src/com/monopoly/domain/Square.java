@@ -11,4 +11,13 @@ public class Square {
 	public String getName() {
 		return name;
 	}
+
+	public void landOn(Player player) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public void passesOver(Player player) {
+		
+	}
 }
