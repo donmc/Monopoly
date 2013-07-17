@@ -36,7 +36,7 @@ public class Player {
 		takeTurn(b,d1,d2,1);
 	}
 	
-	public void takeTurn(Board b, Dice d1, Dice d2, int times) {
+	private void takeTurn(Board b, Dice d1, Dice d2, int times) {
 		int firstRoll = d1.roll();
 		int secondRoll = d2.roll();
 		int roll = firstRoll + secondRoll;

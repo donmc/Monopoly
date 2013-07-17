@@ -39,7 +39,7 @@ public class WhenMovingPlayers {
 	public void shouldNotMoveMoreThanTwelvePositions() {
 		Board b = new Board();
 		Player p = new Player("Whatever you want", b.getStartSquare());
-		p.takeTurn(b, new Dice(), new Dice());
+		p.takeTurn(b, new Dice(), new Dice()); 
 		assertTrue(12>= p.getLocation().getPosition());
 	}
 	
